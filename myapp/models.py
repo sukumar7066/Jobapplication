@@ -32,7 +32,7 @@ class student(models.Model):
         ("male","male"),("female","female"),("others","others")
     )
     gender=models.CharField(max_length=20,choices=options,default ="male")
-    user=models.OneToOneField(User,on_delete=models.DO_NOTHING)
+    user=models.OneToOneField(User,on_delete=models.DO_NOTHING,null=True)
 
     def __str__(self):
         return self.name
