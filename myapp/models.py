@@ -21,7 +21,6 @@ class job(models.Model):
         return self.title
     
 class student(models.Model):
-    name=models.CharField(max_length=20)
     age = models.PositiveIntegerField()
     qualification=models.CharField(max_length=200)
     skill = models.CharField(max_length=200)
@@ -32,7 +31,7 @@ class student(models.Model):
         ("male","male"),("female","female"),("others","others")
     )
     gender=models.CharField(max_length=20,choices=options,default ="male")
-    user=models.OneToOneField(User,on_delete=models.DO_NOTHING,null=True)
+    user=models.OneToOneField(User,on_delete=models.DO_NOTHING,null=True,related_name="profile")
 
     def __str__(self):
         return self.name

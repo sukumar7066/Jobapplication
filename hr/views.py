@@ -20,8 +20,10 @@ class loginview(FormView):
             user_obj=authenticate(request,username=u_name,password=pwd)
             if user_obj:
                 login(request,user_obj)
-                print("success")
-                return redirect("index")
+                if request.user.is_superuser:
+                    return redirect("index")
+                else:
+                    return redirect("seekerindex")
             else:
                 print("failed")
             return render(request,"login.html",{"form":form})

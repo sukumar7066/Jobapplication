@@ -6,10 +6,11 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="" method="post">
-        {%csrf_token%}
-        {{form.as_p}}
-        <button type="submit">Submit</button>
-    </form>
+    <h3>Hello {{request.user}}</h3>
+    {%if request.user.profile %}
+    <a href="#">Edit profile</a>
+    {%else%}
+    <a href="{% url 'profile' %}">Addprofile</a>
+    {%endif%}
 </body>
 </html>
